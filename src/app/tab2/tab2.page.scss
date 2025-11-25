@@ -1,0 +1,35 @@
+ion-toolbar {
+--background: #471a72;
+color: #fff8dc;
+}
+
+ion-title {
+
+text-align: center;
+}
+
+ion-content {
+--background: #a78cf0;
+}
+
+ion-grid {
+padding: 16px;
+margin: 0 auto;
+max-width: 1200px;
+}
+
+ion-row {
+margin: 0 -8px;
+
+@media (max-width: 575px) {
+    margin: 0 -4px;
+}
+}
+
+ion-col {
+padding: 8px;
+
+@media (max-width: 575px) {
+    padding: 4px;
+}
+}

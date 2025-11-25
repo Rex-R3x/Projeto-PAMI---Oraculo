@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Meus livros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="adicionarLivro()">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="livros.length === 0" class="livros-vazios">
+    <ion-icon name="library-outline"></ion-icon>
+    <h3>Nenhum livro cadastrado</h3>
+    <p>Clique no botão "+" para adicionar seus livros</p>
+  </div>
+
+  <ion-grid fixed *ngIf="livros.length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let livro of livros; let i = index">
+        <ion-card class="livro-card">
+          <div class="imagem-container" *ngIf="livro.imagem">
+            <img [src]="livro.imagem" [alt]="livro.titulo" />
+          </div>
+          
+          <ion-card-header>
+            <ion-card-title>{{ livro.titulo }}</ion-card-title>
+            <ion-card-subtitle>{{ livro.autor }}</ion-card-subtitle>
+          </ion-card-header>
+          
+          <!-- REMOVEU a div .desc-nota e colocou tudo direto -->
+          <ion-card-content>
+            {{ livro.descricao }}
+          </ion-card-content>
+          
+          <div class="rating-container">
+            <p class="nota"><strong>Nota:</strong></p>
+            <div class="rating">
+              <input 
+                type="radio" 
+                [id]="'star5_' + i" 
+                [name]="'rating_' + i" 
+                value="5"
+                (click)="avaliarLivro(i, 5)">
+              <label [for]="'star5_' + i">★</label>
+
+              <input 
+                type="radio" 
+                [id]="'star4_' + i" 
+                [name]="'rating_' + i" 
+                value="4"
+                (click)="avaliarLivro(i, 4)">
+              <label [for]="'star4_' + i">★</label>
+
+              <input 
+                type="radio" 
+                [id]="'star3_' + i" 
+                [name]="'rating_' + i" 
+                value="3"
+                (click)="avaliarLivro(i, 3)">
+              <label [for]="'star3_' + i">★</label>
+
+              <input 
+                type="radio" 
+                [id]="'star2_' + i" 
+                [name]="'rating_' + i" 
+                value="2"
+                (click)="avaliarLivro(i, 2)">
+              <label [for]="'star2_' + i">★</label>
+
+              <input 
+                type="radio" 
+                [id]="'star1_' + i" 
+                [name]="'rating_' + i" 
+                value="1"
+                (click)="avaliarLivro(i, 1)">
+              <label [for]="'star1_' + i">★</label>
+            </div>   
+          </div>
+          
+          <ion-button color="danger" expand="full" (click)="removerLivro(i)">
+            Excluir
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
