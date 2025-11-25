@@ -1,0 +1,7 @@
+{
+  "name": "Oraculo-SuaEstanteVirtual",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
