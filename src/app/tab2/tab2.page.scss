@@ -22,7 +22,7 @@ ion-row {
 margin: 0 -8px;
 
 @media (max-width: 575px) {
-    margin: 0 -4px;
+margin: 0 -4px;
 }
 }
 
@@ -30,6 +30,148 @@ ion-col {
 padding: 8px;
 
 @media (max-width: 575px) {
-    padding: 4px;
+padding: 4px;
+}
+}
+.form-container {
+padding: 16px;
+max-width: 600px;
+margin: 0 auto;
+}
+
+.form-card {
+background: #ddc3f6;
+border: 2px solid #391a72;
+border-radius: 12px;
+box-shadow: 0 4px 12px #391a7257;
+
+ion-card-header {
+background: #391a72;
+padding: 16px;
+
+ion-card-title {
+    color: #ffe991;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+ion-card-subtitle {
+    color: #d0b7ff;
+    text-align: center;
+    font-size: 0.9rem;
+}
+}
+
+ion-card-content {
+padding: 20px;
+}
+}
+
+.imagem-upload {
+text-align: center;
+margin-bottom: 20px;
+
+.upload-container {
+border: 2px dashed #391a72;
+border-radius: 8px;
+padding: 30px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #f0e6ff;
+
+&:hover {
+    background: #e6d9ff;
+    border-color: #5d2da0;
+}
+
+ion-icon {
+    font-size: 48px;
+    color: #391a72;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #391a72;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.preview-image {
+    max-width: 120px;
+    max-height: 160px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(57, 26, 114, 0.3);
+}
+}
+}
+
+ion-item {
+--background: #f0e6ff;
+--border-color: #391a72;
+--border-radius: 8px;
+margin-bottom: 16px;
+
+ion-label {
+color: #391a72;
+font-weight: 600;
+}
+
+ion-input, ion-textarea, ion-select {
+--color: #1f162e;
+--placeholder-color: #8b7aa8;
+}
+}
+
+.rating-section {
+text-align: center;
+margin: 20px 0;
+
+.section-title {
+color: #391a72;
+font-weight: 600;
+margin-bottom: 12px;
+}
+
+.rating {
+background: transparent;
+direction: rtl;
+display: inline-flex;
+
+input {
+    display: none;
+}
+
+label {
+    font-size: 32px;
+    color: #ae57ff;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+label:hover,
+label:hover ~ label {
+    color: #ffd700;
+}
+
+input:checked ~ label {
+    color: #ffd700;
+}
+}
+}
+
+.botoes {
+margin-top: 24px;
+
+.btn-adicionar {
+--background: #28a745;
+--background-hover: #218838;
+--color: white;
+margin-bottom: 12px;
+}
+
+.btn-limpar {
+--border-color: #391a72;
+--color: #391a72;
 }
 }
