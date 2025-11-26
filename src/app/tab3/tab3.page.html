@@ -1,16 +1,83 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Buscar
-    </ion-title>
+    <ion-title>Buscar Livros</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="search-container">
+    
+    <ion-card class="search-card">
+      <ion-card-content>
+        <ion-searchbar 
+          [(ngModel)]="termoPesquisa" 
+          (ionInput)="filtrarLivros()"
+          placeholder="Buscar por título, autor ou gênero..."
+          animated
+          clear-icon="close-circle"
+          class="custom-searchbar">
+        </ion-searchbar>
 
+        <div class="filtros">
+          <ion-chip (click)="alternarFiltro('todos')" [class.ativo]="filtroAtivo === 'todos'">
+            <ion-label>Todos</ion-label>
+          </ion-chip>
+          <ion-chip (click)="alternarFiltro('alta')" [class.ativo]="filtroAtivo === 'alta'">
+            <ion-label>Alta Avaliação</ion-label>
+          </ion-chip>
+          <ion-chip (click)="alternarFiltro('recentes')" [class.ativo]="filtroAtivo === 'recentes'">
+            <ion-label>Recentes</ion-label>
+          </ion-chip>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="resultados">
+
+      <div *ngIf="livrosFiltrados.length === 0 && termoPesquisa" class="sem-resultados">
+        <ion-icon name="search-outline"></ion-icon>
+        <h3>Nenhum livro encontrado</h3>
+        <p>Tente buscar com outros termos</p>
+      </div>
+
+      <div *ngIf="!termoPesquisa" class="aguardando-busca">
+        <ion-icon name="search-outline"></ion-icon>
+        <h3>Encontre seus livros</h3>
+        <p>Digite na barra de pesquisa para começar</p>
+      </div>
+
+      <ion-list *ngIf="livrosFiltrados.length > 0">
+        <ion-item 
+          *ngFor="let livro of livrosFiltrados; let i = index" 
+          class="livro-item"
+          (click)="verDetalhes(livro)">
+          
+          <ion-avatar slot="start" *ngIf="livro.imagem">
+            <img [src]="livro.imagem" [alt]="livro.titulo">
+          </ion-avatar>
+          
+          <ion-avatar slot="start" *ngIf="!livro.imagem" class="avatar-sem-imagem">
+            <ion-icon name="book-outline"></ion-icon>
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{ livro.titulo }}</h2>
+            <p>{{ livro.autor }}</p>
+            <p class="genero">{{ livro.genero || 'Sem gênero' }}</p>
+          </ion-label>
+
+          <div slot="end" class="avaliacao">
+            <span class="nota" *ngIf="livro.nota">
+              {{ livro.nota }}/5
+            </span>
+            <span class="sem-nota" *ngIf="!livro.nota">
+              Sem nota
+            </span>
+          </div>
+
+        </ion-item>
+      </ion-list>
+
+    </div>
+  </div>
 </ion-content>
