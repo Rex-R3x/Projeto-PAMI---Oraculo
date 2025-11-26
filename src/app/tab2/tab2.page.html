@@ -1,16 +1,113 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Adicionar
-    </ion-title>
-  </ion-toolbar>
+<ion-toolbar>
+  <ion-title>Adicionar Livro</ion-title>
+</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div class="form-container">
+  <ion-card class="form-card">
+    <ion-card-header>
+      <ion-card-title>Novo Livro</ion-card-title>
+      <ion-card-subtitle>Adicione um livro à sua coleção</ion-card-subtitle>
+    </ion-card-header>
 
+    <ion-card-content>
+      <form (ngSubmit)="adicionarNovoLivro()" #livroForm="ngForm">
+        
+        <div class="imagem-upload">
+          <div class="upload-container" (click)="fileInput.click()">
+            <ion-icon name="image-outline" *ngIf="!novoLivro.imagem"></ion-icon>
+            <img [src]="novoLivro.imagem" *ngIf="novoLivro.imagem" class="preview-image">
+            <p *ngIf="!novoLivro.imagem">Clique para adicionar capa</p>
+          </div>
+          <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+        </div>
+
+        <!-- Título -->
+        <ion-item>
+          <ion-label position="stacked">Título *</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="novoLivro.titulo" 
+            name="titulo" 
+            required
+            placeholder="Digite o título do livro">
+          </ion-input>
+        </ion-item>
+
+        <!-- Autor -->
+        <ion-item>
+          <ion-label position="stacked">Autor *</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="novoLivro.autor" 
+            name="autor" 
+            required
+            placeholder="Nome do autor">
+          </ion-input>
+        </ion-item>
+
+        <!-- Descrição -->
+        <ion-item>
+          <ion-label position="stacked">Descrição</ion-label>
+          <ion-textarea 
+            [(ngModel)]="novoLivro.descricao" 
+            name="descricao"
+            rows="4"
+            placeholder="Sinopse ou suas impressões sobre o livro">
+          </ion-textarea>
+        </ion-item>
+
+        <!-- Gênero -->
+        <ion-item>
+          <ion-label position="stacked">Gênero</ion-label>
+          <ion-select 
+            [(ngModel)]="novoLivro.genero" 
+            name="genero"
+            placeholder="Selecione o gênero">
+            <ion-select-option value="Romance">Romance</ion-select-option>
+            <ion-select-option value="Ficção">Ficção</ion-select-option>
+            <ion-select-option value="Fantasia">Fantasia</ion-select-option>
+            <ion-select-option value="Suspense">Suspense</ion-select-option>
+            <ion-select-option value="Terror">Terror</ion-select-option>
+            <ion-select-option value="Biografia">Biografia</ion-select-option>
+            <ion-select-option value="Poesia">Poesia</ion-select-option>
+            <ion-select-option value="Outro">Outro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Avaliação Inicial -->
+        <div class="rating-section">
+          <p class="section-title">Sua Avaliação</p>
+          <div class="rating">
+            <input type="radio" id="add-star5" name="rating-add" value="5" [(ngModel)]="novoLivro.nota">
+            <label for="add-star5">★</label>
+            <input type="radio" id="add-star4" name="rating-add" value="4" [(ngModel)]="novoLivro.nota">
+            <label for="add-star4">★</label>
+            <input type="radio" id="add-star3" name="rating-add" value="3" [(ngModel)]="novoLivro.nota">
+            <label for="add-star3">★</label>
+            <input type="radio" id="add-star2" name="rating-add" value="2" [(ngModel)]="novoLivro.nota">
+            <label for="add-star2">★</label>
+            <input type="radio" id="add-star1" name="rating-add" value="1" [(ngModel)]="novoLivro.nota">
+            <label for="add-star1">★</label>
+          </div>
+        </div>
+
+        <div class="botoes">
+          <ion-button type="submit" expand="block" [disabled]="!livroForm.valid" class="btn-adicionar">
+            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+            Adicionar Livro
+          </ion-button>
+          
+          <ion-button type="button" expand="block" fill="outline" (click)="limparFormulario()" class="btn-limpar">
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Limpar
+          </ion-button>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</div>
 </ion-content>
