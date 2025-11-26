@@ -22,7 +22,7 @@ ion-row {
 margin: 0 -8px;
 
 @media (max-width: 575px) {
-    margin: 0 -4px;
+margin: 0 -4px;
 }
 }
 
@@ -30,6 +30,157 @@ ion-col {
 padding: 8px;
 
 @media (max-width: 575px) {
-    padding: 4px;
+padding: 4px;
+}
+}
+.search-container {
+padding: 16px;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.search-card {
+background: #ddc3f6;
+border: 2px solid #391a72;
+border-radius: 12px;
+box-shadow: 0 4px 12px #391a7257;
+margin-bottom: 20px;
+
+ion-card-content {
+padding: 20px;
+}
+}
+
+.custom-searchbar {
+--background: #f0e6ff;
+--border-radius: 8px;
+--color: #1f162e;
+--placeholder-color: #8b7aa8;
+--box-shadow: 0 2px 6px rgba(57, 26, 114, 0.1);
+}
+
+.filtros {
+display: flex;
+gap: 8px;
+margin-top: 16px;
+flex-wrap: wrap;
+justify-content: center;
+
+ion-chip {
+--background: #f0e6ff;
+--color: #391a72;
+transition: all 0.3s ease;
+
+&.ativo {
+    --background: #391a72;
+    --color: #ffe991;
+}
+
+&:hover {
+    --background: #e6d9ff;
+}
+}
+}
+
+.resultados {
+margin-top: 16px;
+}
+
+.sem-resultados, .aguardando-busca {
+text-align: center;
+padding: 60px 20px;
+color: #391a72;
+
+ion-icon {
+font-size: 64px;
+color: #d0b7ff;
+margin-bottom: 16px;
+}
+
+h3 {
+color: #391a72;
+margin-bottom: 8px;
+font-size: 1.3rem;
+}
+
+p {
+color: #5d2da0;
+margin-bottom: 20px;
+font-size: 1rem;
+}
+}
+
+.livro-item {
+--background: #f0e6ff;
+--border-color: #d0b7ff;
+margin-bottom: 8px;
+border-radius: 8px;
+border: 1px solid #d0b7ff;
+cursor: pointer;
+transition: all 0.3s ease;
+
+&:hover {
+--background: #e6d9ff;
+transform: translateX(4px);
+}
+
+ion-avatar {
+width: 50px;
+height: 50px;
+
+img {
+    border-radius: 4px;
+}
+
+&.avatar-sem-imagem {
+    background: #391a72;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ion-icon {
+    color: #ffe991;
+    font-size: 24px;
+    }
+}
+}
+
+ion-label {
+h2 {
+    color: #391a72;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+p {
+    color: #5d2da0;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+
+    &.genero {
+    color: #8b7aa8;
+    font-size: 0.8rem;
+    font-style: italic;
+    }
+}
+}
+
+.avaliacao {
+text-align: right;
+
+.nota {
+    background: #391a72;
+    color: #ffe991;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sem-nota {
+    color: #8b7aa8;
+    font-size: 0.8rem;
+    font-style: italic;
+}
 }
 }
